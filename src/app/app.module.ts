@@ -9,6 +9,7 @@ import { ListUsersComponent } from '../components/list-users/list-users.componen
 import { UserComponent } from '../components/user/user.component';
 import { UserFormComponent } from '../components/user-form/user-form.component';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
+import { ViewPageComponent } from '../pages/view-page/view-page.component';
 
 import { UsersService } from '../services/users.service';
 import { HeadersInterceptor } from '../commons/interceptors/header.interceptor';
@@ -23,6 +24,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +33,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     ListUsersComponent,
     UserComponent,
     UserFormComponent,
-    ViewUserComponent
-
+    ViewUserComponent,
+    ViewPageComponent
   ],
   imports: [
     BrowserModule,

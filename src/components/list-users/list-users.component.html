@@ -1,6 +1,11 @@
 <div class="view-wrapper">
-  <div class="title">
-    {{title}}
+  <div class="view-header flexbox space-between">
+    <div class="title">
+      {{title}}
+    </div>
+    <div class="button-container">
+      <a  mat-button>Add User</a>
+    </div>
   </div>
   <div class="item-container">
     <div *ngFor="let user of users" class="item">

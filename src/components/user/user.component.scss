@@ -1,13 +1,8 @@
 @import '../../styles/settings/colors';
 
 :host {
-
+  width: 100%;
   p {
     margin: 0 0 5px 0;
-  }
-
-  ::ng-deep .mat-card {
-    background: $white;
-    color: $gray;
   }
 }

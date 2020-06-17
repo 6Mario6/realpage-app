@@ -15,6 +15,10 @@ export class UsersService {
     );
   }
 
-
+  getUserByID(id) {
+    return this.http.get(
+      `${this.urlAPI}/Users/${id}`
+     );
+  }
 
 }

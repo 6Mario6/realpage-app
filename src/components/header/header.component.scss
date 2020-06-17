@@ -1,0 +1,7 @@
+@import '../../styles/settings/_colors.scss';
+:host {
+    a {
+        color: $white;
+        text-decoration: none;
+    }
+}
