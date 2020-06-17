@@ -9,9 +9,12 @@ import { ListUsersComponent } from '../components/list-users/list-users.componen
 import { UserComponent } from '../components/user/user.component';
 import { UserFormComponent } from '../components/user-form/user-form.component';
 
+import { UsersService } from '../services/users.service';
+import { HeadersInterceptor } from '../commons/interceptors/header.interceptor';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -32,7 +35,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     BrowserAnimationsModule,
     MatToolbarModule,
   ],
-  providers: [],
+  providers: [
+    UsersService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HeadersInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
