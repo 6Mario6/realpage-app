@@ -8,14 +8,18 @@ import { HeaderComponent } from '../components/header/header.component';
 import { ListUsersComponent } from '../components/list-users/list-users.component';
 import { UserComponent } from '../components/user/user.component';
 import { UserFormComponent } from '../components/user-form/user-form.component';
+import { ViewUserComponent } from '../components/view-user/view-user.component';
 
 import { UsersService } from '../services/users.service';
 import { HeadersInterceptor } from '../commons/interceptors/header.interceptor';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
+
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -26,7 +30,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     HeaderComponent,
     ListUsersComponent,
     UserComponent,
-    UserFormComponent
+    UserFormComponent,
+    ViewUserComponent
 
   ],
   imports: [
@@ -34,6 +39,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    HttpClientModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [
     UsersService,

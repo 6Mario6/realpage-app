@@ -1,3 +1,10 @@
-<p>
-  list-users works!
-</p>
+<div class="view-wrapper">
+  <div class="title">
+    {{title}}
+  </div>
+  <div class="item-container">
+    <div *ngFor="let user of users" class="item">
+      <app-user [user]= "user"></app-user>
+    </div>
+  </div>
+</div>

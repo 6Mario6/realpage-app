@@ -1,0 +1,17 @@
+@import '../../styles/settings/colors';
+:host {
+    width: 100%;
+    .title {
+       color: $orange;
+       font-weight: bold;
+       margin-bottom: 20px;
+    }
+    .view-wrapper {
+      width: 100%;
+    }
+
+    .item {
+        margin-bottom: 10px;
+    }
+
+}
