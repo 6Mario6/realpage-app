@@ -1,3 +1,37 @@
-<p>
-  user-form works!
-</p>
+<div>
+  <div class="title">
+    {{title}}
+  </div>
+  <mat-card>
+   <form [formGroup]="userForm" (ngSubmit)="saveUser()" >
+    <div class="fields-container">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input 
+        formControlName="UserName"
+        type="text" matInput placeholder="Username">
+        <mat-error *ngIf="userForm.get('UserName').invalid">
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field >
+        <mat-label>Password</mat-label>
+        <input 
+        formControlName="Password"
+        type="password" matInput placeholder="Password">
+        <mat-error *ngIf="userForm.get('Password').errors && userForm.get('Password').errors.required">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="userForm.get('Password').errors && userForm.get('Password').errors.minlength">
+          Password must be at least <strong>8 characters</strong>
+        </mat-error>
+      </mat-form-field>
+    </div> 
+    <mat-card-actions>
+      <a mat-button>Cancel</a>
+      <button mat-button>Save</button>
+    </mat-card-actions>
+   </form>
+  </mat-card>
+</div>

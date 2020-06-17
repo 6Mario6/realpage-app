@@ -10,6 +10,7 @@ import { UserComponent } from '../components/user/user.component';
 import { UserFormComponent } from '../components/user-form/user-form.component';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
 import { ViewPageComponent } from '../pages/view-page/view-page.component';
+import { FormPageComponent } from '../pages/form-page/form-page.component';
 
 import { UsersService } from '../services/users.service';
 import { HeadersInterceptor } from '../commons/interceptors/header.interceptor';
@@ -18,9 +19,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+
 
 
 
@@ -34,7 +38,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     UserComponent,
     UserFormComponent,
     ViewUserComponent,
-    ViewPageComponent
+    ViewPageComponent,
+    FormPageComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     HttpClientModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UsersService,

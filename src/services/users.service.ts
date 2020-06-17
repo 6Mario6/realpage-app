@@ -10,15 +10,15 @@ export class UsersService {
   }
 
   getUsers() {
-    return this.http.get(
-     `${this.urlAPI}/Users`
-    );
+    return this.http.get(`${this.urlAPI}/Users`);
   }
 
   getUserByID(id) {
-    return this.http.get(
-      `${this.urlAPI}/Users/${id}`
-     );
+    return this.http.get(`${this.urlAPI}/Users/${id}`);
+  }
+
+  saveUser(params) {
+    return this.http.post(`${this.urlAPI}/Users`, params);
   }
 
 }

@@ -1,0 +1,21 @@
+@import '../../styles/settings/colors';
+:host {
+  .title {
+    color: $orange;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .mat-card {
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+
+  .mat-form-field {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+}
