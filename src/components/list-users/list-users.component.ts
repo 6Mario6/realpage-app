@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class ListUsersComponent implements OnInit {
   @Input() title = '';
   public users: Array<UserInterface> = [];
-
+  public emptyList = false;
   constructor(private usersService: UsersService , private router: Router) {}
 
   ngOnInit() {
@@ -20,9 +20,11 @@ export class ListUsersComponent implements OnInit {
   }
 
   getListUsers() {
-    this.usersService.getUsers().subscribe(
+    this.usersService.getUsersList().subscribe(
       (response: Array<UserInterface>) => {
         this.users = response;
+        this.usersService.setUsers(this.users);
+        this.emptyList = this.users && this.users.length === 0 ? true : false;
       },
       (error) => {
         console.log(error);

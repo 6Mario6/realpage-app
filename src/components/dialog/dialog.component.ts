@@ -27,6 +27,9 @@ export class DialogComponent implements OnInit {
     } else if (this.data === 'update') {
       this.title = 'Update User';
       this.description = 'User has been updated';
+    } else if (this.data === 'error') {
+      this.title = 'Error';
+      this.description = 'User not found';
     }
   }
 

@@ -6,11 +6,26 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class UsersService {
   private urlAPI = environment.apiBaseUrl;
+  private users = [];
   constructor(private http: HttpClient) {
   }
 
+  setUsers(users) {
+    this.users = users;
+  }
+
   getUsers() {
-    return this.http.get(`${this.urlAPI}/Users`);
+   return this.users;
+  }
+
+  addNewUser(user) {
+    this.users.unshift(user);
+  }
+
+  getUsersList() {
+    return this.http.get(`${this.urlAPI}/Users`).pipe(map((response: any) => {
+      return this.users.length > 0 ? this.users : response;
+    }));
   }
 
   getUserByID(id) {

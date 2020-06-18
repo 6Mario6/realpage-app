@@ -51,7 +51,8 @@ export class UserFormComponent implements OnInit, OnChanges  {
   save()  {
     this.usersService.saveUser(this.userForm.value).subscribe(
       (response) => {
-        this.openDialog();
+        this.usersService.addNewUser(response);
+        this.openDialog('add');
       },
       (error) => {
         console.log(error);
@@ -62,7 +63,8 @@ export class UserFormComponent implements OnInit, OnChanges  {
   update() {
     this.usersService.updateUser( this.user.ID, this.userForm.value).subscribe(
       (response) => {
-        this.openDialog();
+     //   this.usersService.
+        this.openDialog('update');
       },
       (error) => {
         console.log(error);
@@ -70,11 +72,11 @@ export class UserFormComponent implements OnInit, OnChanges  {
     );
   }
 
-  openDialog() {
+  openDialog(type) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.panelClass = 'panel';
     dialogConfig.autoFocus = false;
-    dialogConfig.data =  this.user ? 'update' : 'add';
+    dialogConfig.data = type;
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result) => {
       this.router.navigate([

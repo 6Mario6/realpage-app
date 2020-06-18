@@ -8,6 +8,7 @@
     </div>
   </div>
   <div class="item-container">
+    <div *ngIf = "emptyList">The list of users is empty</div>
     <div *ngFor="let user of users" class="item">
       <app-user [user]= "user"></app-user>
     </div>

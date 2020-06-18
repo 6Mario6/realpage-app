@@ -28,6 +28,8 @@ export class ViewUserComponent implements OnInit {
 
   deletUserByID() {
     this.usersService.deleteUserByID(this.user.ID).subscribe((response) => {
+      const users = this.usersService.getUsers().filter((user) => user.ID !== this.user.ID );
+      this.usersService.setUsers(users);
       this.openDialog();
     }, (error) => {
       console.log(error);
