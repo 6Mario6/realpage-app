@@ -12,7 +12,7 @@ import { DialogComponent } from '../components/dialog/dialog.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { ViewPageComponent } from '../pages/view-page/view-page.component';
 import { FormPageComponent } from '../pages/form-page/form-page.component';
-
+import { EditFormPageComponent } from '../pages/edit-form-page/edit-form-page.component';
 
 import { UsersService } from '../services/users.service';
 import { HeadersInterceptor } from '../commons/interceptors/header.interceptor';
@@ -28,6 +28,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { MatDialogModule } from '@angular/material';
     ViewUserComponent,
     ViewPageComponent,
     FormPageComponent,
-    DialogComponent
+    DialogComponent,
+    EditFormPageComponent,
   ],
   imports: [
     BrowserModule,

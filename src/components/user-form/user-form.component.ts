@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { Location } from '@angular/common';
@@ -12,9 +12,9 @@ import { ROUTES } from '../../router/routes';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss'],
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, OnChanges  {
   @Input() title = '';
-
+  @Input() user;
   public userForm: FormGroup;
   constructor(
     private router: Router,
@@ -25,34 +25,56 @@ export class UserFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: any) {
     this.setForm();
   }
 
   setForm() {
     this.userForm = this.formBuilder.group({
-      UserName: ['', [Validators.required]],
-      Password: ['', [Validators.required, Validators.minLength(8)]],
+      UserName: [this.user && this.user.UserName ? this.user.UserName : '', [Validators.required]],
+      Password: [this.user && this.user.Password ? this.user.Password : '', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   saveUser() {
     if (this.userForm.valid) {
-      this.usersService.saveUser(this.userForm.value).subscribe(
-        (response) => {
-          this.openDialog();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      if (this.user) {
+        this.update();
+      } else  {
+        this.save();
+      }
     }
+  }
+
+  save()  {
+    this.usersService.saveUser(this.userForm.value).subscribe(
+      (response) => {
+        this.openDialog();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  update() {
+    this.usersService.updateUser( this.user.ID, this.userForm.value).subscribe(
+      (response) => {
+        this.openDialog();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.panelClass = 'panel';
     dialogConfig.autoFocus = false;
-    dialogConfig.data = 'add';
+    dialogConfig.data =  this.user ? 'update' : 'add';
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result) => {
       this.router.navigate([

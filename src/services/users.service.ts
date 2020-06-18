@@ -21,6 +21,10 @@ export class UsersService {
     return this.http.post(`${this.urlAPI}/Users`, params);
   }
 
+  updateUser(id, params) {
+    return this.http.put(`${this.urlAPI}/Users/${id}`, params);
+  }
+
   deleteUserByID(id) {
     return this.http.delete(`${this.urlAPI}/Users/${id}`);
   }

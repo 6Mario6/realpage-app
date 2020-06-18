@@ -18,12 +18,15 @@ export class DialogComponent implements OnInit {
     }
 
   ngOnInit() {
-    if(this.data === 'delete') {
-       this.title = 'User Delete';
+    if (this.data === 'delete') {
+       this.title = 'Delete User';
        this.description = 'User has been deleted';
     } else if (this.data === 'add') {
-      this.title = 'User Delete';
-      this.description = 'User has been deleted';
+      this.title = 'Add User';
+      this.description = 'User has been added';
+    } else if (this.data === 'update') {
+      this.title = 'Update User';
+      this.description = 'User has been updated';
     }
   }
 

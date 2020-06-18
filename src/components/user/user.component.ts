@@ -24,4 +24,10 @@ export class UserComponent implements OnInit {
     ]);
   }
 
+  goToViewEdit(user) {
+    this.router.navigate([
+      `${ROUTES.EDIT_USER}/${user.ID}`,
+    ]);
+  }
+
 }

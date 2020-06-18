@@ -20,6 +20,12 @@ export class ViewUserComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToViewEdit() {
+    this.router.navigate([
+      `${ROUTES.EDIT_USER}/${this.user.ID}`,
+    ]);
+  }
+
   deletUserByID() {
     this.usersService.deleteUserByID(this.user.ID).subscribe((response) => {
       this.openDialog();
