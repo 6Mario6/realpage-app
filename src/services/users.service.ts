@@ -21,4 +21,8 @@ export class UsersService {
     return this.http.post(`${this.urlAPI}/Users`, params);
   }
 
+  deleteUserByID(id) {
+    return this.http.delete(`${this.urlAPI}/Users/${id}`);
+  }
+
 }

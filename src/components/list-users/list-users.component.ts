@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { UserInterface } from '../../commons/interfaces/user.interface';
 import { ROUTES } from '../../router/routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-list-users",
@@ -11,8 +12,8 @@ import { ROUTES } from '../../router/routes';
 export class ListUsersComponent implements OnInit {
   @Input() title = '';
   public users: Array<UserInterface> = [];
-  public url  =  `${ROUTES.ADD_USER}`;
-  constructor(private usersService: UsersService) {}
+
+  constructor(private usersService: UsersService , private router: Router) {}
 
   ngOnInit() {
     this.getListUsers();
@@ -22,7 +23,6 @@ export class ListUsersComponent implements OnInit {
     this.usersService.getUsers().subscribe(
       (response: Array<UserInterface>) => {
         this.users = response;
-        console.log(response);
       },
       (error) => {
         console.log(error);
@@ -30,5 +30,10 @@ export class ListUsersComponent implements OnInit {
     );
   }
 
+  addUser() {
+    this.router.navigate([
+      `${ROUTES.ADD_USER}`,
+    ]);
+  }
 
 }

@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HomeComponent } from '../pages/home/home.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { ListUsersComponent } from '../components/list-users/list-users.component';
 import { UserComponent } from '../components/user/user.component';
 import { UserFormComponent } from '../components/user-form/user-form.component';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
+import { DialogComponent } from '../components/dialog/dialog.component';
+import { HomeComponent } from '../pages/home/home.component';
 import { ViewPageComponent } from '../pages/view-page/view-page.component';
 import { FormPageComponent } from '../pages/form-page/form-page.component';
+
 
 import { UsersService } from '../services/users.service';
 import { HeadersInterceptor } from '../commons/interceptors/header.interceptor';
@@ -23,10 +25,7 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-
-
-
-
+import { MatDialogModule } from '@angular/material';
 
 
 @NgModule({
@@ -39,7 +38,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     UserFormComponent,
     ViewUserComponent,
     ViewPageComponent,
-    FormPageComponent
+    FormPageComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +51,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [
     UsersService,
@@ -60,6 +61,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     useClass: HeadersInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogComponent
+  ]
 })
 export class AppModule { }

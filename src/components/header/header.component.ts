@@ -8,7 +8,7 @@ import { ROUTES } from '../../router/routes';
 })
 export class HeaderComponent implements OnInit {
   @Input() title = '';
-  public url = `${ROUTES.HOME}`;
+  public url = `/${ROUTES.HOME}`;
   constructor() { }
 
   ngOnInit() {
