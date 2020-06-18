@@ -6,6 +6,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Router } from '@angular/router';
 import { ROUTES } from '../../router/routes';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { UserInterface } from 'src/commons/interfaces/user.interface';
 
 @Component({
   selector: 'app-user-form',
@@ -62,9 +64,14 @@ export class UserFormComponent implements OnInit, OnChanges  {
 
   update() {
     this.usersService.updateUser( this.user.ID, this.userForm.value).subscribe(
-      (response) => {
+      (response: UserInterface) => {
      //   this.usersService.
+        const userIndex = this.usersService.getUsers().findIndex(user => user.ID === this.user.ID);
+        if(userIndex !== -1) {
+          this.usersService.getUsers()[userIndex] = {ID: this.user.ID, UserName: response.UserName, Password: response.Password};
+        }
         this.openDialog('update');
+
       },
       (error) => {
         console.log(error);

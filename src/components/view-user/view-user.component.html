@@ -2,22 +2,25 @@
   <div class="title">
     {{title}}
   </div>
-  <mat-card *ngIf="user">
-    <img mat-card-image src="../../assets/img/error-img.png" alt="user img">
-    <mat-card-content>
-      <p>
-        <strong>ID:</strong> {{user.ID}}
-      </p>
-      <p>
-        <strong>Name:</strong> {{user.UserName}}
-      </p>
-      <p>
-        <strong>Password:</strong> {{user.Password}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button (click)="goToViewEdit()" mat-button>Edit</button>
-      <button (click)="deletUserByID()" mat-button>Delete</button>
-    </mat-card-actions>
+  <mat-card [ngClass]="{'item-loading': !user}" >
+    <div *ngIf="user">
+      <img mat-card-image src="../../assets/img/error-img.png" alt="user img">
+      <mat-card-content>
+        <p>
+          <strong>ID:</strong> {{user.ID}}
+        </p>
+        <p>
+          <strong>Name:</strong> {{user.UserName}}
+        </p>
+        <p>
+          <strong>Password:</strong> {{user.Password}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="goToViewEdit()" mat-button>Edit</button>
+        <button (click)="deletUserByID()" mat-button>Delete</button>
+      </mat-card-actions>
+    </div>
+
   </mat-card>
 </div>

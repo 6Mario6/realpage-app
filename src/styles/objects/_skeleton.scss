@@ -1,0 +1,22 @@
+.item-loading {
+  position: relative;
+  overflow: hidden;
+  background-color: $light-blue;
+}
+.item-loading::after{
+  top: 0;
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
